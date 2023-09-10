@@ -76,9 +76,11 @@ To generate fake user data, you can use the provided user factory utility. Here'
 
 javascriptCopy code
 
-`const { createMultipleFakeUsers } = require('appwrite-migration-tool/lib/utils/userFactory');
+```
+const { createMultipleFakeUsers } = require('appwrite-migration-tool/lib/utils/userFactory');
 
-createMultipleFakeUsers(10); // Creates 10 fake user profiles`
+createMultipleFakeUsers(10); // Creates 10 fake user profiles
+```
 
 Contributing
 ------------
