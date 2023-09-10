@@ -1,58 +1,91 @@
-# create-svelte
+# Appwrite-Migration-Tool
 
-Everything you need to build a Svelte library, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Appwrite-Migration-Tool is a versatile utility package designed to simplify database migrations and data seeding for the [Appwrite](https://appwrite.io/) platform. It offers an easy-to-use interface for managing migrations and seeding data in your Appwrite project, all while ensuring performance, maintainability, and scalability.
 
-Read more about creating a library [in the docs](https://kit.svelte.dev/docs/packaging).
+## Features
 
-## Creating a project
+- **Database Migrations:** Seamlessly create and manage database migrations for your Appwrite project. Keep your database schema up-to-date with ease.
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **Data Seeding:** Populate your Appwrite database with sample data using configurable seeders. Perfect for development, testing, and staging environments.
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+- **Customizable Configuration:** Configure your Appwrite-Migrate package to fit your project's specific needs, including Appwrite API endpoint, project ID, API key, migration paths, seed paths, and more.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+- **TypeScript Support:** Appwrite-Migrate is built with TypeScript, providing type definitions for a better development experience.
 
-## Developing
+- **Easy Setup:** The package includes an initialization script that guides you through the configuration process, making it simple to get started.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Installation
+
+To get started, install the package using your package manager of choice (npm, pnpm, or yarn):
 
 ```bash
-npm run dev
+npm install appwrite-migration-tool
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+# or
+
+pnpm install appwrite-migration-tool
+
+# or
+
+yarn add appwrite-migration-tool
+
 ```
+## Usage
+-----
 
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
+### Configuration
 
-## Building
+Before using the package, you need to configure it with your Appwrite settings. Run the following command to set up the configuration:
 
-To build your library:
+`npx appwrite-migration-tool init`
 
-```bash
-npm run package
-```
+This command will prompt you to provide the following information:
 
-To create a production version of your showcase app:
+-   Appwrite endpoint
+-   Project ID
+-   API key
+-   Paths for migrations and seeds
 
-```bash
-npm run build
-```
+### Database Migrations
 
-You can preview the production build with `npm run preview`.
+To create a new migration, use the following command:
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+`npx migrate:make migration_name`
 
-## Publishing
+Replace `migration_name` with a descriptive name for your migration.
 
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
+To run pending migrations, execute:
 
-To publish your library to [npm](https://www.npmjs.com):
+`npx migrate`
 
-```bash
-npm publish
-```
+### Seeding Data
+
+To create a seed file, use the following command:
+
+`npx seed:make SeedFileName`
+
+Replace `SeedFileName` with the name of your seed file.
+
+To seed data into your Appwrite database, run:
+
+`npx seed SeedFileName`
+
+### User Factory
+
+To generate fake user data, you can use the provided user factory utility. Here's an example:
+
+javascriptCopy code
+
+`const { createMultipleFakeUsers } = require('appwrite-migration-tool/lib/utils/userFactory');
+
+createMultipleFakeUsers(10); // Creates 10 fake user profiles`
+
+Contributing
+------------
+
+Contributions are welcome! Feel free to open issues, suggest improvements, or submit pull requests on our [Appwrite Migration Tool](https://github.com/upperdo/appwrite-migration-tool).
+
+License
+-------
+
+This project is licensed under the MIT License. See the [LICENSE](https://github/upperdo/appwrite-migration-tool/LICENSE) file for details.
